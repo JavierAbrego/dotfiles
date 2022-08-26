@@ -1,5 +1,5 @@
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
+export PATH="$HOME/Library/Python/3.10/bin:$HOME/bin:$PATH";
 
 # # Load the shell dotfiles, and then some:
 # # * ~/.path can be used to extend `$PATH`.
@@ -66,3 +66,15 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+if [ -n "$NVIM" ]; then
+	if [ -x "$(command -v nvr)" ]; then
+		alias nvim=nvr
+		export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+
+	else
+		alias nvim='echo "No nesting!"'
+	fi
+else
+	export VISUAL="nvim"
+fi

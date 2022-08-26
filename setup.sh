@@ -43,6 +43,11 @@ brew install htop
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 brew install neofetch git jq kubernetes-cli k9s tmux
+# add neovim and vim-plug
+brew install neovim --HEAD
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+pip3 install --user --upgrade neovim-remote
 
 #install sdkman
 curl -s "https://get.sdkman.io" | bash
@@ -61,9 +66,11 @@ rm -rf ~/tmux.conf
 
 ln -s ~/dotfiles/.aliases ~/.aliases
 ln -s ~/dotfiles/.bash_profile ~/.bash_profile
+ln -s ~/dotfiles/.bash_profile ~/.bashrc
 ln -s ~/dotfiles/.exports ~/.exports
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.hushlogin ~/.hushlogin
 ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
 ln -s ~/dotfiles/.vim ~/.vim
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
