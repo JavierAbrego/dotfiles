@@ -5,13 +5,25 @@ if has('nvim')
 	Plug 'github/copilot.vim'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+	Plug 'preservim/nerdtree'
+	Plug 'folke/tokyonight.nvim'
 	call plug#end()
 endif
 " Use the Solarized Dark theme
-set background=dark
-colorscheme gruvbox
-let g:solarized_termtrans=1
+"set background=dark
+"colorscheme gruvbox
+"let g:solarized_termtrans=1
+let g:tokyonight_style = "storm"
+let g:tokyonight_italic_functions = 1
 
+" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:tokyonight_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
+
+" Load the colorscheme
+colorscheme tokyonight
 " Make Vim more useful
 set statusline+=%F
 set nocompatible
@@ -276,3 +288,19 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+set splitbelow
+set splitright
+nnoremap <silent><nowait> <C-a>\| :vsp<cr>:ter<cr>
+nnoremap <silent><nowait> <C-a>- :sp<cr>:ter<cr>
+noremap <C-w>m <c-w>_ \| <c-w>\|
+"terminal mappings
+if has('nvim')
+	tnoremap <C-a> <c-\><c-n>
+endif
+let g:NERDTreeShowHidden=1
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrowExpandable='+'
+let g:NERDTreeDirArrowCollapsible='-'
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>

@@ -1,3 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
-let g:netrw_dirhist_1='/Users/ajavier'
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/ajavier/dev/QE/iaas'
+let g:netrw_dirhist_6='/Users/ajavier/dev/me/algorithms/typescript/src'
+let g:netrw_dirhist_5='/Users/ajavier/dev/me/algorithms/typescript'
+let g:netrw_dirhist_4='/Users/ajavier/dev/me/algorithms/typescript/src'
+let g:netrw_dirhist_3='/Users/ajavier/dev/me/algorithms/typescript'
+let g:netrw_dirhist_2='/Users/ajavier/dev/me/algorithms/typescript/src'
+let g:netrw_dirhist_1='/Users/ajavier/dev/me/algorithms/typescript'
+let g:netrw_dirhist_0='/Users/ajavier/dev/me/algorithms/typescript/src'
+let g:netrw_dirhist_9='/Users/ajavier/dev/me/algorithms/typescript'
+let g:netrw_dirhist_8='/Users/ajavier/dev/me/algorithms/typescript/src'

@@ -26,6 +26,7 @@
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
   simple = log --pretty=format:\" * %s\"
 
+	s = status
   # remote
   r = remote -v                     # show remotes (verbose)
 
@@ -39,12 +40,13 @@
   t = tag -n                        # show tags with <n> lines of each tag message
 [log]
   decorate=auto
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[merge]
+	tool = "nvim"
+[mergetool]
+	keepBackup = false
+	prompt = false
+[mergetool "nvim"]
+	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
 [apply]
   whitespace = nowarn
 [branch]
@@ -56,6 +58,7 @@
 [core]
   pager = delta
     eol = lf
+	excludesfile = /Users/ajavier/.gitignore_global
 [interactive]
   diffFilter = delta --color-only
 [delta]
@@ -88,3 +91,11 @@
 	defaultBranch = main
 [gpg]
 	program = gpg
+[commit]
+	template = /Users/ajavier/.stCommitMsg
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
