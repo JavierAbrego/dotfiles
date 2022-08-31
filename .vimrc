@@ -136,6 +136,7 @@ nnoremap <leader>fa <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fr <cmd>Telescope resume<cr>
 let $BASH_ENV = "~/.aliases"
 " CoC configurations
 " Some servers have issues with backup files, see #649.

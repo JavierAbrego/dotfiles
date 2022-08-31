@@ -38,3 +38,4 @@ make
 tmux
 vim
 kubectl
+fzf
