@@ -42,7 +42,9 @@ brew install htop
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
-brew install neofetch git jq kubernetes-cli k9s tmux
+brew install neofetch git jq kubernetes-cli k9s tmux fzf
+brew tap ankitpokhrel/jira-cli
+brew install jira-cli
 # add neovim and vim-plug
 brew install neovim --HEAD
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

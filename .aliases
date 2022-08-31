@@ -135,9 +135,14 @@ code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 sourcetree () { open -a SourceTree --args $* ;}
 wrk() { eval "cd -- $(fzf < ~/.wrk-spaces)"; }
 alias st="open -a SourceTree ./"
+jirame () { eval "jira issue list -a $(jira me)"; }
+jiramep () { eval "jira issue list -a $(jira me) --plain"; }
 alias cht="~/dotfiles/scripts/cht.sh"
+alias duck="ddgr"
 alias t="tmux"
 alias ta="tmux attach-session -t 0"
+
+# VRA DEVELOPMENT
 export MVN_PROFILE="QE2"
 alias mvnos="mvn clean package vrealize:push -DincludeDependencies=true -DskipTests -P$MVN_PROFILE -Dvro.packageImportConfigurationAttributeValues=false -pl vro"
 alias mvnog="mvn vra-ng:pull -PQE2 -pl vro"

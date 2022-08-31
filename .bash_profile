@@ -10,6 +10,7 @@ export PATH="$HOME/Library/Python/3.10/bin:$HOME/bin:$PATH";
 # unset file;
 source ~/.aliases
 source ~/.exports
+source ~/.corp.local
 
 
 # Case-insensitive globbing (used in pathname expansion)
