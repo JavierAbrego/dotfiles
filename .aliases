@@ -134,6 +134,7 @@ alias path='echo -e ${PATH//:/\\n}'
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 sourcetree () { open -a SourceTree --args $* ;}
 alias st="open -a SourceTree ./"
+alias cht="~/dotfiles/scripts/cht.sh"
 alias t="tmux"
 alias ta="tmux attach-session -t 0"
 export MVN_PROFILE="QE2"
