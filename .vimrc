@@ -25,7 +25,7 @@ let g:tokyonight_colors = {
 " Load the colorscheme
 colorscheme tokyonight
 " Make Vim more useful
-set statusline+=%F
+set statusline=%F%m%r%h%w%=\ [%{&ff}]\ [line:\ %l/%L,col:\ %v]\ [%p%%]\ 
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
@@ -305,3 +305,8 @@ let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='-'
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+" Dissable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
