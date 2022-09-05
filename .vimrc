@@ -97,6 +97,8 @@ set showmode
 set title
 " Show the (partial) command as it’s being typed
 set showcmd
+" searching on end of file don't go to the next result on the top
+set nowrapscan
 " auto indent
 set autoindent
 filetype indent on
@@ -310,3 +312,8 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+" Disable arrow keys in insert mode
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>

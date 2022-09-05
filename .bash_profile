@@ -79,3 +79,5 @@ if [ -n "$NVIM" ]; then
 else
 	export VISUAL="nvim"
 fi
+
+set -o vi
