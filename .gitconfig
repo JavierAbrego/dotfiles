@@ -26,7 +26,7 @@
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
   simple = log --pretty=format:\" * %s\"
 
-	s = status
+	s = status -sb
   # remote
   r = remote -v                     # show remotes (verbose)
 
@@ -38,6 +38,7 @@
 
   # tag
   t = tag -n                        # show tags with <n> lines of each tag message
+	o = !open `git remote get-url origin`
 [log]
   decorate=auto
 [merge]
