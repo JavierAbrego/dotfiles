@@ -7,6 +7,8 @@ if has('nvim')
 	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 	Plug 'preservim/nerdtree'
 	Plug 'folke/tokyonight.nvim'
+	Plug 'nvim-treesitter/nvim-treesitter'
+	Plug 'nvim-treesitter/nvim-treesitter-context'
 	call plug#end()
 endif
 " Use the Solarized Dark theme
@@ -318,3 +320,5 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+" remap C-c to escape and dismiss copilot suggestions if any
+inoremap <C-c> <Esc><Esc> <Plug>(copilot-dismiss)
