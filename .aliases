@@ -152,3 +152,5 @@ alias vraRestart="node ~/dev/vraTools/vra-scripts/mainRestartLastDeployment.js"
 alias vraDelete="node ~/dev/vraTools/vra-scripts/mainDeleteAllDeployments.js"
 alias vra="node ~/dev/vraTools/vra-cli/cli.js i"
 shopt -s expand_aliases
+source ~/dotfiles/dotfiles-vmware/.aliases
+source ~/dotfiles/dotfiles-personal/.aliases
