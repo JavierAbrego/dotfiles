@@ -45,6 +45,7 @@ brew install gnupg
 brew install neofetch git jq kubernetes-cli k9s tmux fzf
 brew tap ankitpokhrel/jira-cli
 brew install jira-cli
+brew install neomutt w3m urlview offline-imap
 # add neovim and vim-plug
 brew install neovim --HEAD
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
