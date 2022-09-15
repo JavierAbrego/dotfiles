@@ -1,0 +1,6 @@
+[submodule "dotfiles-personal"]
+	path = dotfiles-personal
+	url = https://github.com/JavierAbrego/dotfiles-personal.git
+[submodule "dotfiles-vmware"]
+	path = dotfiles-vmware
+	url = https://github.com/JavierAbrego/dotfiles-vmware.git
