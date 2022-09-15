@@ -142,15 +142,6 @@ alias duck="ddgr"
 alias t="tmux"
 alias ta="tmux attach-session -t 0"
 
-# VRA DEVELOPMENT
-export MVN_PROFILE="QE2"
-alias mvnos="mvn clean package vrealize:push -DincludeDependencies=true -DskipTests -P$MVN_PROFILE -Dvro.packageImportConfigurationAttributeValues=false -pl vro"
-alias mvnog="mvn vra-ng:pull -PQE2 -pl vro"
-alias mvnas="mvn clean package vrealize:push -DincludeDependencies=true -DskipTests -P$(echo $MVN_PROFILE) -Dvro.packageImportConfigurationAttributeValues=false -pl vra"
-alias mvnag="mvn vra-ng:pull -PQE2 -pl vra"
-alias vraRestart="node ~/dev/vraTools/vra-scripts/mainRestartLastDeployment.js"
-alias vraDelete="node ~/dev/vraTools/vra-scripts/mainDeleteAllDeployments.js"
-alias vra="node ~/dev/vraTools/vra-cli/cli.js i"
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
-source ~/dotfiles/dotfiles-personal/.aliases
+source ~/dotfiles/dotfiles-vmware/.aliases
