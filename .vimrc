@@ -321,4 +321,5 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 " remap C-c to escape and dismiss copilot suggestions if any
-inoremap <C-c> <Esc><Esc> <Plug>(copilot-dismiss)
+" inoremap <C-c> <Esc><Esc> <Plug>(copilot-dismiss)
+inoremap <C-c> <Esc><Esc> 
