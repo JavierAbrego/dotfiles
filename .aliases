@@ -111,6 +111,7 @@ alias cht="~/dotfiles/scripts/cht.sh"
 alias duck="ddgr"
 alias t="tmux"
 alias ta="tmux attach-session -t 0"
+alias catimg="tiv"
 
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
