@@ -115,4 +115,4 @@ alias catimg="tiv"
 
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
-source ~/dotfiles/dotfiles-vmware/.aliases
+source ~/dotfiles/dotfiles-personal/.aliases

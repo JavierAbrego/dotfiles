@@ -7,6 +7,7 @@ if has('nvim')
 	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 	Plug 'preservim/nerdtree'
 	Plug 'folke/tokyonight.nvim'
+	Plug 'arcticicestudio/nord-vim'
 	Plug 'nvim-treesitter/nvim-treesitter'
 	Plug 'nvim-treesitter/nvim-treesitter-context'
 	call plug#end()
@@ -25,7 +26,8 @@ let g:tokyonight_colors = {
 \ }
 
 " Load the colorscheme
-colorscheme tokyonight
+" colorscheme tokyonight
+colorscheme nord
 " Make Vim more useful
 set statusline=%F%m%r%h%w%=\ [%{&ff}]\ [line:\ %l/%L,col:\ %v]\ [%p%%]\ 
 set nocompatible

@@ -27,6 +27,7 @@
   simple = log --pretty=format:\" * %s\"
 
 	s = status -sb
+	cm = commit -m
   # remote
   r = remote -v                     # show remotes (verbose)
 
