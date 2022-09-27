@@ -112,6 +112,8 @@ alias duck="ddgr"
 alias t="tmux"
 alias ta="tmux attach-session -t 0"
 alias catimg="tiv"
+wttr() { curl "wttr.in/$1"; }
+wttr2() { curl "wttr.in/$1?format=v2"; }
 
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
