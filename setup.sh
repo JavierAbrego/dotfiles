@@ -47,6 +47,7 @@ brew tap ankitpokhrel/jira-cli
 brew install jira-cli
 brew install neomutt w3m urlview offline-imap
 brew install tika
+brew install elinks
 # add neovim and vim-plug
 brew install neovim --HEAD
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
