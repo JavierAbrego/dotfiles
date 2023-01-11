@@ -1,5 +1,6 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/Library/Python/3.10/bin:$HOME/bin:$PATH";
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
 # # Load the shell dotfiles, and then some:
 # # * ~/.path can be used to extend `$PATH`.
@@ -82,3 +83,4 @@ fi
 
 set -o vi
 neofetch --off
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
