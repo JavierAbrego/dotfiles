@@ -101,10 +101,12 @@ alias reload="exec ${SHELL} -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 alias docker='sudo docker'
+alias docker-compose='sudo docker-compose'
 
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 sourcetree () { open -a SourceTree --args $* ;}
 wrk() { eval "cd -- $(fzf < ~/.wrk-spaces)"; }
+alias wrkEdit="nvim ~/.wrk-spaces"
 alias st="open -a SourceTree ./"
 jirame () { eval "jira issue list -a $(jira me)"; }
 jiramep () { eval "jira issue list -a $(jira me) --plain"; }

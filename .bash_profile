@@ -1,7 +1,7 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/Library/Python/3.10/bin:$HOME/bin:$PATH";
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-
+export FZF_DEFAULT_COMMAND='find . -path './.git' -prune -o -print'
 # # Load the shell dotfiles, and then some:
 # # * ~/.path can be used to extend `$PATH`.
 # # * ~/.extra can be used for other settings you don’t want to commit.
@@ -11,7 +11,6 @@ export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 # unset file;
 source ~/.aliases
 source ~/.exports
-source ~/.corp.local
 
 
 # Case-insensitive globbing (used in pathname expansion)
