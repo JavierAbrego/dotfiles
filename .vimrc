@@ -325,5 +325,6 @@ inoremap <Right> <Nop>
 " remap C-c to escape and dismiss copilot suggestions if any
 " inoremap <C-c> <Esc><Esc> <Plug>(copilot-dismiss)
 inoremap <C-c> <Esc><Esc> 
+let g:copilot_node_command = "~/.nvm/versions/node/v16.15.1/bin/node"
 " open office files
 autocmd BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt,*.pdf,*.pptx,*.ppt,*.xlsx,*.xls,*.msg silent %!tika -t "%" 
