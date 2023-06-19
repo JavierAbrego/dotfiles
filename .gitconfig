@@ -106,3 +106,5 @@
 [user]
 	name = Javier Abrego
 	email = ajavier@vmware.com
+[url "git@github.com:"]
+	insteadOf = https://github.com/
