@@ -1,3 +1,5 @@
+require("javier.set")
 require("javier.remap")
 require("javier.packer")
 require("javier.colors")
+require("javier.autocommands")
