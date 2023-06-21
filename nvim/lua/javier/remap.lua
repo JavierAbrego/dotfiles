@@ -12,27 +12,26 @@ local function execute_command(cmd)
   return result
 end
 
+local function executeCurrentFileWithCommand(cmd)
+		vim.cmd(':sp')
+		local command = table.concat({":ter ", cmd," \"",vim.fn.expand("%"), '"'}, "")		
+		vim.cmd(command)
+end
 -- Key mapping
 vim.keymap.set("n", "<C-Enter>", function()
   local file_extension = vim.fn.expand("%:e")
 
   if file_extension == "c" then
-    -- Compile C file using gcc
-    execute_command("gcc " .. vim.fn.expand("%") .. " -o " .. vim.fn.expand("%:r"))
-  elseif file_extension == "java" then
-    -- Execute Java file using java command
-    execute_command("java " .. vim.fn.expand("%:r"))
-  elseif file_extension == "py" then
-    -- Execute Python file using python3 command
-    execute_command("python3 " .. vim.fn.expand("%"))
-  elseif file_extension == "js" then
-    -- Execute JavaScript file using node command
-    execute_command("node " .. vim.fn.expand("%"))
-  elseif file_extension == "ts" then
-    -- Execute TypeScript file using ts-node command
-    execute_command("ts-node " .. vim.fn.expand("%"))
+			executeCurrentFileWithCommand('gcc')
+	elseif file_extension == "java" then
+			executeCurrentFileWithCommand('java')
+	elseif file_extension == "py" then
+			executeCurrentFileWithCommand('python3')
+	elseif file_extension == "js" then
+			executeCurrentFileWithCommand('node')
+	elseif file_extension == "ts" then
+			executeCurrentFileWithCommand('ts-node')
   else
-    -- File extension not supported
     print("File extension not supported for execution.")
   end
 end, { silent = true })
