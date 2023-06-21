@@ -1,5 +1,6 @@
-require("javier.set")
-require("javier.remap")
 require("javier.packer")
+require("javier.set")
+require("javier.fzf")
+require("javier.remap")
 require("javier.colors")
 require("javier.autocommands")
