@@ -48,5 +48,10 @@ return require('packer').startup(function(use)
   }
   use 'preservim/nerdtree'
   use 'folke/tokyonight.nvim'
+	use 'shaunsingh/nord.nvim'
+	use { "ellisonleao/gruvbox.nvim" }
+	use "rebelot/kanagawa.nvim"
+	use 'apzelos/blamer.nvim'
+	use 'projekt0n/github-nvim-theme'
 
 end)

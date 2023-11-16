@@ -102,7 +102,7 @@ set title
 " Show the (partial) command as it’s being typed
 set showcmd
 " searching on end of file don't go to the next result on the top
-set nowrapscan
+" set nowrapscan
 " auto indent
 set autoindent
 filetype indent on
@@ -328,3 +328,4 @@ inoremap <C-c> <Esc><Esc>
 let g:copilot_node_command = "~/.nvm/versions/node/v16.15.1/bin/node"
 " open office files
 autocmd BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt,*.pdf,*.pptx,*.ppt,*.xlsx,*.xls,*.msg silent %!tika -t "%" 
+let g:netrw_dirhistmax=0

@@ -5,6 +5,9 @@ telescope.setup {
 				find_files = {
 						hidden = true,
 						file_ignore_patterns = { ".git/", "node_modules/" }
+				},
+				colorscheme = {
+						enable_preview = true
 				}
 		}
 }
@@ -14,6 +17,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>ft', builtin.treesitter, {})
+vim.keymap.set('n', '<leader>cs', builtin.colorscheme, {})
 --git telescope
 vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
 vim.keymap.set('n', '<leader>gcc', builtin.git_bcommits, {})

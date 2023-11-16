@@ -23,6 +23,8 @@ vim.keymap.set("n", "<C-Enter>", function()
 
   if file_extension == "c" then
 			executeCurrentFileWithCommand('gcc')
+	elseif file_extension == "cpp" then
+			executeCurrentFileWithCommand('g++ -std=c++14')
 	elseif file_extension == "java" then
 			executeCurrentFileWithCommand('java')
 	elseif file_extension == "py" then

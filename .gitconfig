@@ -28,6 +28,7 @@
 
 	s = status -sb
 	cm = commit -m
+	cmd = "!f() { git commit -m \"Commit with changes to: $(git diff --cached --name-only | xargs -I{} basename {} | paste -sd, -)\"; }; f"
   # remote
   r = remote -v                     # show remotes (verbose)
 
@@ -106,5 +107,3 @@
 [user]
 	name = Javier Abrego
 	email = ajavier@vmware.com
-[url "git@github.com:"]
-	insteadOf = https://github.com/
