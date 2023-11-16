@@ -29,6 +29,7 @@
 	s = status -sb
 	cm = commit -m
 	cmd = "!f() { git commit -m \"Commit with changes to: $(git diff --cached --name-only | xargs -I{} basename {} | paste -sd, -)\"; }; f"
+	cma = commit --amend
   # remote
   r = remote -v                     # show remotes (verbose)
 
