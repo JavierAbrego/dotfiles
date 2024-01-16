@@ -14,7 +14,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/.vim_undo/undo"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -53,10 +53,10 @@ vim.g.mapleader = ","
 vim.opt.binary = true
 vim.opt.eol = false
 -- Centralize backups, swapfiles, and undo history
-vim.opt.backupdir = "/home/javier/.vim/backups"
-vim.opt.directory = "/home/javier/.vim/swaps"
+vim.opt.backupdir = os.getenv("HOME") .. "/.vim_undo/backups"
+vim.opt.directory = os.getenv("HOME") .. "/.vim_undo/swaps"
 if vim.fn.exists("&undodir") == 1 then
-  vim.opt.undodir = "/home/javier/.vim/undo"
+  vim.opt.undodir = os.getenv("HOME") .. "/.vim_undo/undo"
 end
 -- Don’t create backups when editing files in certain directories
 vim.opt.backupskip = "/tmp/*,/private/tmp/*"
