@@ -1,6 +1,7 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/Library/Python/3.10/bin:$HOME/bin:$PATH";
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export FZF_DEFAULT_COMMAND='find . -path './.git' -prune -o -print'
 # # Load the shell dotfiles, and then some:
 # # * ~/.path can be used to extend `$PATH`.
