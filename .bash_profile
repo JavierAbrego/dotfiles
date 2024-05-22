@@ -2,6 +2,7 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/Library/Python/3.10/bin:$HOME/bin:$PATH";
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export FZF_DEFAULT_COMMAND='find . -path './.git' -prune -o -print'
 # # Load the shell dotfiles, and then some:
 # # * ~/.path can be used to extend `$PATH`.
@@ -78,8 +79,8 @@ fi;
 ##    alias $cmd="unalias $nvm_cmds && unset nvm_cmds && . $NVM_DIR/nvm.sh --no-use && load-nvmrc && $cmd"
 ##  done
 ##fi
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#export NVM_DIR="$HOME/.config/nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 
@@ -112,5 +113,7 @@ fi
 
 set -o vi
 #neofetch --off
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -43,6 +43,9 @@
   t = tag -n                        # show tags with <n> lines of each tag message
 	o = !open `git remote get-url origin`
 	fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
+	
+	# push
+  pushup = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
 [log]
   decorate=auto
 [merge]
