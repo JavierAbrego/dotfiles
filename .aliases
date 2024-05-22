@@ -118,6 +118,16 @@ alias catimg="tiv"
 wttr() { curl "wttr.in/$1"; }
 wttr2() { curl "wttr.in/$1?format=v2"; }
 
+fznpm() {
+  selected_script=$(jq -r '.scripts | keys[]' package.json | fzf)
+  if [ -n "$selected_script" ]; then
+    npm run "$selected_script"
+  else
+    echo "No script selected."
+  fi
+}
+alias v='nvim'
+
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
 source ~/dotfiles/dotfiles-personal/.aliases
