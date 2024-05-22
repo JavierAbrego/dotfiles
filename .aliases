@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+is_mac() {
+    [[ "$(uname)" == "Darwin" ]]
+}
+#
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
@@ -40,7 +44,7 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
@@ -117,6 +121,16 @@ alias ta="tmux attach-session -t 0"
 alias catimg="tiv"
 wttr() { curl "wttr.in/$1"; }
 wttr2() { curl "wttr.in/$1?format=v2"; }
+
+fznpm() {
+  selected_script=$(jq -r '.scripts | keys[]' package.json | fzf)
+  if [ -n "$selected_script" ]; then
+    npm run "$selected_script"
+  else
+    echo "No script selected."
+  fi
+}
+alias v='nvim'
 
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases

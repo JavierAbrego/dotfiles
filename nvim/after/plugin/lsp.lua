@@ -46,6 +46,10 @@ lsp.on_attach(function(client, bufnr)
 	-- See :help vim.lsp.buf.hover().
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+	vim.keymap.set("n", "gvd", function()
+    vim.cmd("vsplit")  -- This command opens a new vertical split window
+    vim.lsp.buf.definition()  -- This function jumps to the definition
+end, opts)
 	-- Jumps to the definition of the symbol under the cursor.
 	-- See :help vim.lsp.buf.definition().
 
@@ -77,6 +81,7 @@ lsp.on_attach(function(client, bufnr)
 	-- See :help vim.lsp.buf.rename().
 
 	vim.keymap.set("n", "<F3>", function() vim.lsp.buf.format() end, opts)
+	vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end, opts)
 	-- Format code in the current buffer.
 	-- See :help vim.lsp.buf.format().
 
