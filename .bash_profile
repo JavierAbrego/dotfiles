@@ -1,3 +1,4 @@
+
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/Library/Python/3.10/bin:$HOME/bin:$PATH";
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
@@ -52,7 +53,7 @@ fi;
 #
 ## Add `killall` tab completion for common apps
 #complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal" killall;
-eval "$(/opt/homebrew/bin/brew shellenv)"
+#eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ##load-nvmrc() {
 ##  local node_version="$(nvm version)"
