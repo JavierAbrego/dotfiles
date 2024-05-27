@@ -1,7 +1,16 @@
 
+is_mac() {
+    [[ "$(uname)" == "Darwin" ]]
+}
+
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/Library/Python/3.10/bin:$HOME/bin:$PATH";
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+if is_mac; then
+	export PATH="/opt/homebrew/bin:$PATH"
+else
+	export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+fi
+
 export PATH="$HOME/go/bin:$PATH"
 export FZF_DEFAULT_COMMAND='find . -path './.git' -prune -o -print'
 # # Load the shell dotfiles, and then some:
