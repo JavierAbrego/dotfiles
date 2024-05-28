@@ -18,7 +18,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+  --["<C-Space>"] = cmp.mapping.complete(),
 })
 
 cmp_mappings['<Tab>'] = nil
@@ -71,7 +71,7 @@ end, opts)
 	-- See :help vim.lsp.buf.references().
 
 	vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help() end, opts)
-  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("i", "<C-Space>", function() vim.lsp.buf.signature_help() end, opts)
 	-- Displays signature information about the symbol under the cursor in a floating window.
 	-- See :help vim.lsp.buf.signature_help().
 	-- If a mapping already exists for this key, this function is not bound.
