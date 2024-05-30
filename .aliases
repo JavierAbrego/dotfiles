@@ -128,7 +128,7 @@ fznpm() {
   fi
 }
 alias v='nvim'
-
+alias gitperday='~/dotfiles/scripts/commits_per_day.sh'
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
 source ~/dotfiles/dotfiles-personal/.aliases
