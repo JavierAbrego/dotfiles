@@ -5,6 +5,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>wrk", SwitchWorkspaceDropdown)
 -- Create a custom mapping for Ctrl-c to behave like Esc but keep the cursor in place
 vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>`^', { noremap = true, silent = true })
+-- save all
+vim.keymap.set('n', '<leader>w', ':wa<CR>', opts)
 
 
 -- Function to execute a command synchronously
