@@ -129,6 +129,9 @@ fznpm() {
 }
 alias v='nvim'
 alias gitperday='~/dotfiles/scripts/commits_per_day.sh'
+countRepoLines() {
+		printf "%'d\n" $(git ls-files | xargs cat | wc -l)
+}
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
 source ~/dotfiles/dotfiles-personal/.aliases
