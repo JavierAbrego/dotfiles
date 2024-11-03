@@ -53,5 +53,10 @@ return require('packer').startup(function(use)
 	use "rebelot/kanagawa.nvim"
 	use 'apzelos/blamer.nvim'
 	use 'projekt0n/github-nvim-theme'
+	use {"OlegGulevskyy/better-ts-errors.nvim",
+		requires = {
+				{'MunifTanjim/nui.nvim'}
+		}
+	}
 
 end)

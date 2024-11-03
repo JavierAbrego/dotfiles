@@ -110,3 +110,12 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+-- https://github.com/OlegGulevskyy/better-ts-errors.nvim/tree/main
+-- better ts errors
+require("better-ts-errors").setup({
+    keymaps = {
+      toggle = '<leader>dd', -- Toggling keymap
+      go_to_definition = '<leader>dx' -- Go to problematic type from popup window
+    }
+})

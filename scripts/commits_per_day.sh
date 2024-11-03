@@ -7,7 +7,7 @@ count_lines_for_commit() {
 }
 
 # Get the date of one month ago
-one_month_ago=$(date -d "1 month ago" +%Y-%m-%d)
+one_month_ago=$(date -d "3 month ago" +%Y-%m-%d)
 
 # Get the list of commits with dates and process them
 git log --since="$one_month_ago" --pretty=format:"%H %ad" --date=short | while read commit date; do
