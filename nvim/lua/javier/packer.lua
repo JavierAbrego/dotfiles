@@ -58,5 +58,6 @@ return require('packer').startup(function(use)
 				{'MunifTanjim/nui.nvim'}
 		}
 	}
+  use 'unblevable/quick-scope'
 
 end)
