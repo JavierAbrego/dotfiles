@@ -4,7 +4,6 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'ts_ls',
-  'jdtls'
 })
 
 -- Fix Undefined global 'vim'
