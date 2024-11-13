@@ -101,7 +101,7 @@ end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
 end)
 
--- lsp.skip_server_setup({'jdtls'})
+lsp.skip_server_setup({'jdtls'})
 
 lsp.setup()
 

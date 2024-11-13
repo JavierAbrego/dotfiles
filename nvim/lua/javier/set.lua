@@ -34,7 +34,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.compatible = false
 -- Use the OS clipboard by default
 vim.opt.clipboard:append("unnamed")
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option("clipboard","unnamedplus")
 -- Enhance command-line completion
 vim.opt.wildmenu = true
 -- Allow cursor keys in insert mode
