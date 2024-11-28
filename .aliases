@@ -128,7 +128,7 @@ fznpm() {
   fi
 }
 alias v='nvim'
-alias gitperday='~/dotfiles/scripts/commits_per_day.sh'
+alias commitperday='~/dotfiles/scripts/commits_per_day.sh'
 countRepoLines() {
 		printf "%'d\n" $(git ls-files | xargs cat | wc -l)
 }
