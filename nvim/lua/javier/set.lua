@@ -111,3 +111,4 @@ vim.opt.showcmd = true
 -- vim.opt.wrapscan = false
 -- Enable auto indent
 vim.opt.autoindent = true
+vim.o.splitright = false
