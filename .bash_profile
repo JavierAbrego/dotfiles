@@ -9,6 +9,8 @@ if is_mac; then
 	export PATH="/opt/homebrew/bin:$PATH"
 else
 	export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+	# change the mapping for the caps to control
+	setxkbmap -layout us -option ctrl:nocaps 
 fi
 
 export PATH="$HOME/go/bin:$PATH"
@@ -126,3 +128,7 @@ set -o vi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
