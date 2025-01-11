@@ -59,5 +59,14 @@ return require('packer').startup(function(use)
 		}
 	}
   use 'unblevable/quick-scope'
-
+	use {
+        'kawre/leetcode.nvim',
+        run = ':TSUpdate html', -- if you have `nvim-treesitter` installed
+        requires = {
+            'nvim-telescope/telescope.nvim',
+            -- 'ibhagwan/fzf-lua', -- Uncomment if you decide to use it
+            'nvim-lua/plenary.nvim',
+            'MunifTanjim/nui.nvim',
+        }
+		}
 end)
