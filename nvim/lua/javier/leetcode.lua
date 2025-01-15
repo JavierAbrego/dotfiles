@@ -1,4 +1,6 @@
 
+vim.keymap.set('n', '<C-lr>', ':Leet run<CR>')
+vim.keymap.set('n', '<C-ls>', ':Leet submit<CR>')
 require('leetcode').setup({
 		-- General Options
 		arg = "leetcode.nvim",
