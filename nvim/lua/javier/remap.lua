@@ -7,7 +7,10 @@ vim.keymap.set("n", "<leader>wrk", SwitchWorkspaceDropdown)
 vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>`^', { noremap = true, silent = true })
 -- save all
 vim.keymap.set('n', '<leader>w', ':wa<CR>', opts)
-
+-- leetcode
+vim.keymap.set('n', '<leader>lr', ':Leet run<CR>')
+vim.keymap.set('n', '<leader>lc', ':Leet console<CR>')
+vim.keymap.set('n', '<leader>ls', ':Leet submit<CR>')
 
 -- Function to execute a command synchronously
 local function execute_command(cmd)
