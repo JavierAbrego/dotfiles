@@ -11,6 +11,7 @@ vim.keymap.set('n', '<leader>w', ':wa<CR>', opts)
 vim.keymap.set('n', '<leader>lr', ':Leet run<CR>')
 vim.keymap.set('n', '<leader>lc', ':Leet console<CR>')
 vim.keymap.set('n', '<leader>ls', ':Leet submit<CR>')
+vim.keymap.set('n', '<leader>lm', ':Leet menu<CR>')
 
 -- Function to execute a command synchronously
 local function execute_command(cmd)
