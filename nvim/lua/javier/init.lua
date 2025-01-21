@@ -1,4 +1,4 @@
-require("javier.packer")
+require("javier.lazy")
 require("javier.set")
 require("javier.fzf")
 require("javier.remap")
