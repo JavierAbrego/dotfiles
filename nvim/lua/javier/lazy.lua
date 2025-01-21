@@ -19,6 +19,13 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ","
 local plugins = {
 	{
+		'vhyrro/luarocks.nvim',
+		priority = 1001, -- this plugin needs to run before anything else
+		opts = {
+			rocks = { 'magick' },
+		},
+	},
+	{
 		'nvim-telescope/telescope.nvim',
 		version = '0.1.4',
 		-- or                            , branch = '0.1.x',
@@ -31,33 +38,29 @@ local plugins = {
 			ts_update()
 		end
 	},
+	-- LSP Support
+	{ 'neovim/nvim-lspconfig' },
 	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v1.x',
-		dependencies = {
-			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },
-			{
-				'williamboman/mason.nvim',
-				build = function()
-					pcall(vim.cmd, 'MasonUpdate')
-				end,
-			},
-			{ 'williamboman/mason-lspconfig.nvim' },
-
-			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' },
-			{ 'hrsh7th/cmp-buffer' },
-			{ 'hrsh7th/cmp-path' },
-			{ 'saadparwaiz1/cmp_luasnip' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-nvim-lua' },
-
-			-- Snippets
-			{ 'L3MON4D3/LuaSnip' },
-			{ 'rafamadriz/friendly-snippets' },
-		}
+		'williamboman/mason.nvim',
+		build = function()
+			pcall(vim.cmd, 'MasonUpdate')
+		end,
 	},
+	{ 'williamboman/mason-lspconfig.nvim' },
+
+	-- Autocompletion
+	{ 'hrsh7th/nvim-cmp' },
+	{ 'hrsh7th/cmp-buffer' },
+	{ 'hrsh7th/cmp-path' },
+	{ 'saadparwaiz1/cmp_luasnip' },
+	{ 'hrsh7th/cmp-nvim-lsp' },
+	{ 'hrsh7th/cmp-nvim-lua' },
+
+	-- Snippets
+	{ 'L3MON4D3/LuaSnip' },
+	{ 'rafamadriz/friendly-snippets' },
+
+	-- navigation
 	'preservim/nerdtree',
 	-- colorschemas
 	'folke/tokyonight.nvim',
@@ -74,8 +77,10 @@ local plugins = {
 			{ 'MunifTanjim/nui.nvim' }
 		}
 	},
+
+	-- Lightning fast left-right movement in Vim
 	'unblevable/quick-scope',
-	--
+
 	-- leetcode directly on nvim
 	{
 		'kawre/leetcode.nvim',
