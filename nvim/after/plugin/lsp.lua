@@ -123,6 +123,9 @@ cmp.setup({
 			vim.snippet.expand(args.body)
 		end,
 	},
+	completion = {
+		completeopt = 'menu,menuone,noinsert'
+	}
 })
 
 
@@ -134,7 +137,7 @@ vim.diagnostic.config({
 -- better ts errors
 require("better-ts-errors").setup({
 	keymaps = {
-		toggle = '<leader>dd',        -- Toggling keymap
+		toggle = '<leader>dd',    -- Toggling keymap
 		go_to_definition = '<leader>dx' -- Go to problematic type from popup window
 	}
 })
