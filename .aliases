@@ -106,7 +106,10 @@ alias docker-compose='sudo docker-compose'
 
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 sourcetree () { open -a SourceTree --args $* ;}
-wrk() { eval "cd -- $(fzf < ~/.wrk-spaces)"; }
+wrk() {
+  local query="${1:-}"
+  eval "cd -- $(fzf --query=$query < ~/.wrk-spaces)"
+}
 alias wrkEdit="nvim ~/.wrk-spaces"
 alias st="open -a SourceTree ./"
 jirame () { eval "jira issue list -a $(jira me)"; }
