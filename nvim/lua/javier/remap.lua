@@ -48,4 +48,4 @@ vim.keymap.set("n", "<C-Enter>", function()
 end, { silent = true })
 
 
-vim.keymap.set('n', '<C-m>', ':RenderMarkdown toggle<CR>')
+--vim.keymap.set('n', '<C-m>', ':RenderMarkdown toggle<CR>')

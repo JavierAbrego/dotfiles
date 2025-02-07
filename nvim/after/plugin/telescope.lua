@@ -28,3 +28,8 @@ vim.keymap.set('n', '<leader>fr', builtin.resume, {})
 vim.keymap.set('n', '<leader>ps', function()
 	builtin.grep_string({search = vim.fn.input("Grep > ")})
 end)
+
+vim.keymap.set('n', '<leader>mm', builtin.man_pages, {})
+vim.keymap.set('n', '<leader>rr', builtin.lsp_references, {})
+vim.keymap.set('n', '<leader>dd', builtin.diagnostics, {})
+vim.keymap.set('n', '<leader>tt', builtin.lsp_type_definitions, {})
