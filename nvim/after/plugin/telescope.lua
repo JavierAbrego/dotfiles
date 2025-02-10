@@ -17,7 +17,19 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>ft', builtin.treesitter, {})
-vim.keymap.set('n', '<leader>cs', builtin.colorscheme, {})
+vim.keymap.set('n', '<leader>cs', function()
+    builtin.colorscheme({
+        attach_mappings = function(_, map)
+            map("i", "<CR>", function(prompt_bufnr)
+                require("telescope.actions").select_default(prompt_bufnr)
+                vim.defer_fn(function()
+                    SetTransparentBackground()
+                end, 50)
+            end)
+            return true
+        end
+    })
+end, {})
 --git telescope
 vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
 vim.keymap.set('n', '<leader>gcc', builtin.git_bcommits, {})
