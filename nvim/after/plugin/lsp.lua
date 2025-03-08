@@ -101,8 +101,12 @@ local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
 	sources = {
-		{ name = 'nvim_lsp' },
+		{ name = 'nvim_lsp',               group_index = 5 },
 		{ name = 'render-markdown' },
+		{ name = 'nvim_lua' },
+		{ name = 'nvim_lsp_signature_help' },
+		{ name = 'path' },
+		{ name = 'buffer',                 max_item_count = 5 }
 	},
 	mapping = cmp.mapping.preset.insert({
 		-- `Enter` key to confirm completion
@@ -135,9 +139,9 @@ vim.diagnostic.config({
 
 -- https://github.com/OlegGulevskyy/better-ts-errors.nvim/tree/main
 -- better ts errors
-require("better-ts-errors").setup({
-	keymaps = {
-		toggle = '<leader>dd',    -- Toggling keymap
-		go_to_definition = '<leader>dx' -- Go to problematic type from popup window
-	}
-})
+-- require("better-ts-errors").setup({
+-- 	keymaps = {
+-- 		toggle = '<leader>dd',    -- Toggling keymap
+-- 		go_to_definition = '<leader>dx' -- Go to problematic type from popup window
+-- 	}
+-- })
