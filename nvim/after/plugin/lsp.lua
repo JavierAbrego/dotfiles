@@ -97,39 +97,45 @@ require('mason-lspconfig').setup({
 ---
 -- Autocompletion config
 ---
+-- Require nvim-cmp and LuaSnip
 local cmp = require('cmp')
+local luasnip = require('luasnip')
+
+-- Define a selection behavior for your mappings
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
 cmp.setup({
-	sources = {
-		{ name = 'nvim_lsp',               group_index = 5 },
-		{ name = 'render-markdown' },
-		{ name = 'nvim_lua' },
-		{ name = 'nvim_lsp_signature_help' },
-		{ name = 'path' },
-		{ name = 'buffer',                 max_item_count = 5 }
-	},
-	mapping = cmp.mapping.preset.insert({
-		-- `Enter` key to confirm completion
-		['<CR>'] = cmp.mapping.confirm({ select = false }),
-
-		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-		['<C-y>'] = cmp.mapping.confirm({ select = true }),
-		-- Ctrl+Space to trigger completion menu
-		--['<C-Space>'] = cmp.mapping.complete(),
-
-		-- Scroll up and down in the completion documentation
-		['<C-u>'] = cmp.mapping.scroll_docs(-4),
-		['<C-d>'] = cmp.mapping.scroll_docs(4),
-	}),
-	snippet = {
-		expand = function(args)
-			vim.snippet.expand(args.body)
-		end,
-	},
-	completion = {
-		completeopt = 'menu,menuone,noinsert'
-	}
+  snippet = {
+    -- Use LuaSnip for snippet expansion
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    -- Confirm completion with Enter, without auto-selecting an entry
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    -- Navigate completion items
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    -- Confirm with Ctrl-y and auto-select the first entry if needed
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    -- Scroll documentation
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    -- Optionally, you can enable Ctrl-Space to manually trigger completion:
+    ['<C-Space>'] = cmp.mapping.complete(),
+  }),
+  sources = {
+    -- Prioritized sources:
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
+    { name = 'luasnip' },
+    { name = 'buffer', max_item_count = 5 },
+    { name = 'path' },
+  },
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
+  },
 })
 
 
