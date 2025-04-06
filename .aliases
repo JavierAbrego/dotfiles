@@ -119,6 +119,7 @@ alias duck="ddgr"
 alias t="tmux"
 alias ta="tmux attach-session -t 0"
 alias catimg="tiv"
+alias g="git"
 wttr() { curl "wttr.in/$1"; }
 wttr2() { curl "wttr.in/$1?format=v2"; }
 
