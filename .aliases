@@ -102,7 +102,9 @@ alias reload="exec ${SHELL} -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 alias docker='sudo docker'
+alias d='docker'
 alias docker-compose='sudo docker-compose'
+alias dc='docker-compose'
 
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 sourcetree () { open -a SourceTree --args $* ;}
