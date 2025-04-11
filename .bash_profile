@@ -50,6 +50,10 @@ if which brew &> /dev/null && [ -r "/opt/homebrew/etc/profile.d/bash_completion.
 elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
+export HOMEBREW_PREFIX="/opt/homebrew"
+if [[ -s $HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh ]]; then
+  . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+fi
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type _git &> /dev/null; then
