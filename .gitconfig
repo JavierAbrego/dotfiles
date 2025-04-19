@@ -30,6 +30,7 @@
 	cm = commit -m
 	cmd = "!f() { git commit -m \"Commit with changes to: $(git diff --cached --name-only | xargs -I{} basename {} | paste -sd, -)\"; }; f"
 	cma = commit --amend
+  ai = "!/Users/javier/dotfiles/scripts/commit-ai.sh"
   # remote
   r = remote -v                     # show remotes (verbose)
 
@@ -103,8 +104,8 @@
 [commit]
 	template = ${GIT_TEMPLATE_PATH}
 [user]
-	name = ${GIT_USER_NAME}
-	email = ${GIT_USER_EMAIL}
+	name = Javier Abrego
+	email = javier.abrego@revolucionmusic.com
 [credential]
 	helper = store
 [http]
