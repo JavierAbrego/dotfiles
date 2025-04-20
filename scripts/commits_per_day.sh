@@ -1,4 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Re-execute the script with the correct Bash if needed
+if [[ "$BASH_VERSION" < "5" && -x /opt/homebrew/bin/bash ]]; then
+  exec /opt/homebrew/bin/bash "$0" "$@"
+elif [[ "$BASH_VERSION" < "5" && -x /usr/local/bin/bash ]]; then
+  exec /usr/local/bin/bash "$0" "$@"
+fi
 
 # Function to count lines of code for a specific commit
 count_lines_for_commit() {
