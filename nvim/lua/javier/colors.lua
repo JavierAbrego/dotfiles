@@ -37,4 +37,4 @@ function SetTransparentBackgroundColorSchema(color)
 	SetTransparentBackground()
 end
 
-SetTransparentBackgroundColorSchema('tokyonight-night')
+SetTransparentBackgroundColorSchema('gruvbox')

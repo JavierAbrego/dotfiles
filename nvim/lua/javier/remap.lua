@@ -1,3 +1,4 @@
+vim.keymap.set('n', '^', ':b#<CR>', { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -48,4 +49,7 @@ vim.keymap.set("n", "<C-Enter>", function()
 end, { silent = true })
 
 
+vim.api.nvim_create_user_command('ReloadConfig', function()
+  dofile(vim.env.MYVIMRC)
+end, {})
 --vim.keymap.set('n', '<C-m>', ':RenderMarkdown toggle<CR>')
