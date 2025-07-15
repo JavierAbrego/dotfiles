@@ -27,6 +27,7 @@
   simple = log --pretty=format:\" * %s\"
 
 	s = status -sb
+  p = push
 	cm = commit -m
 	cmd = "!f() { git commit -m \"Commit with changes to: $(git diff --cached --name-only | xargs -I{} basename {} | paste -sd, -)\"; }; f"
 	cma = commit --amend
