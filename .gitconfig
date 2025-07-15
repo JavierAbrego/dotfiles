@@ -31,6 +31,8 @@
 	cmd = "!f() { git commit -m \"Commit with changes to: $(git diff --cached --name-only | xargs -I{} basename {} | paste -sd, -)\"; }; f"
 	cma = commit --amend
   ai = "!/Users/javier/dotfiles/scripts/commit-ai.sh"
+  open = "!/Users/javier/dotfiles/scripts/branch-open.sh"
+  close = "!/Users/javier/dotfiles/scripts/branch-close.sh"
   # remote
   r = remote -v                     # show remotes (verbose)
 
