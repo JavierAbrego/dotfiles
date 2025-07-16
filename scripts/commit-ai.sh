@@ -9,7 +9,7 @@ fi
 
 # --- Configuration ---
 API_KEY="$GEMINI_API_KEY"
-MODEL_NAME="gemini-2.0-flash"
+MODEL_NAME="gemini-2.5-flash"
 API_URL="https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}"
 
 # --- Pre-checks ---
