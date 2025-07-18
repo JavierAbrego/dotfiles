@@ -138,6 +138,7 @@ alias commitperday='~/dotfiles/scripts/commits_per_day.sh'
 countRepoLines() {
 		printf "%'d\n" $(git ls-files | xargs cat | wc -l)
 }
+alias checkgpu="sudo powermetrics --samplers gpu_power -n 1"
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
 source ~/dotfiles/dotfiles-personal/.aliases
