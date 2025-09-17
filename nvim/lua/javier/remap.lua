@@ -13,6 +13,10 @@ vim.keymap.set('n', '<leader>lc', ':Leet console<CR>')
 vim.keymap.set('n', '<leader>ls', ':Leet submit<CR>')
 vim.keymap.set('n', '<leader>lm', ':Leet menu<CR>')
 vim.keymap.set('n', '<leader>lo', ':Leet open<CR>')
+vim.keymap.set("n", "<leader>cp", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+end, { desc = "Copiar ruta absoluta al clipboard" })
+
 
 -- Function to execute a command synchronously
 local function execute_command(cmd)
