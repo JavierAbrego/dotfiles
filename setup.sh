@@ -69,6 +69,8 @@ rm -rf ~/.vimrc
 rm -rf ~/.vim
 rm -rf ~/tmux.conf
 
+mkdir -p ~/.config/nvim 
+n -s ~/dotfiles/nvim ~/.config/nvim/
 ln -s ~/dotfiles/.aliases ~/.aliases
 ln -s ~/dotfiles/.bash_profile ~/.bash_profile
 ln -s ~/dotfiles/.bash_profile ~/.bashrc
@@ -76,6 +78,5 @@ ln -s ~/dotfiles/.exports ~/.exports
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.hushlogin ~/.hushlogin
 ln -s ~/dotfiles/.vimrc ~/.vimrc
-ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
 ln -s ~/dotfiles/.vim ~/.vim
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
