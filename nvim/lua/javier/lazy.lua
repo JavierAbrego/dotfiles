@@ -26,10 +26,12 @@ local plugins = {
 		},
 	},
 	{
-		'nvim-telescope/telescope.nvim',
-		version = '0.1.4',
-		-- or                            , branch = '0.1.x',
-		dependencies = { { 'nvim-lua/plenary.nvim' } }
+  "nvim-telescope/telescope.nvim",
+  version = "0.1.8",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+}
 	},
 	{
 		'nvim-treesitter/nvim-treesitter',
