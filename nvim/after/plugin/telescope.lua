@@ -76,7 +76,13 @@ vim.keymap.set('n', '<leader>fa', function()
   builtin.find_files({ hidden = true })
 end, { desc = 'Buscar todos los ficheros' })
 
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fg', function()
+  require('telescope.builtin').live_grep({
+    additional_args = function()
+      return { "--glob", "!*.md" }  -- esta es la forma correcta
+    end,
+  })
+end, { desc = "Live grep (sin markdown)" })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>ft', builtin.treesitter, {})
