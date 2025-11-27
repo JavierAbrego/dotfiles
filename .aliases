@@ -139,6 +139,7 @@ countRepoLines() {
 		printf "%'d\n" $(git ls-files | xargs cat | wc -l)
 }
 alias checkgpu="sudo powermetrics --samplers gpu_power -n 1"
+alias curl2http='~/dotfiles/scripts/curl2http.js'
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
 source ~/dotfiles/dotfiles-personal/.aliases

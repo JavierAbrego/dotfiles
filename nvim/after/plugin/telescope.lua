@@ -118,3 +118,188 @@ vim.keymap.set('n', '<leader>mm', builtin.man_pages, {})
 vim.keymap.set('n', '<leader>rr', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>dd', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>tt', builtin.lsp_type_definitions, {})
+
+----------------------------------------------------------
+-- Highlights para cada tipo de función
+----------------------------------------------------------
+vim.api.nvim_set_hl(0, "TSExportFunction", { fg = "#7ef29c" })
+vim.api.nvim_set_hl(0, "TSNamedFunction",  { fg = "#e6db74" })
+vim.api.nvim_set_hl(0, "TSArrowFunction",  { fg = "#ff9da4" })
+vim.api.nvim_set_hl(0, "TSMethod",         { fg = "#9dc6ff" })
+vim.api.nvim_set_hl(0, "TSCallback",       { fg = "#d6aaff" })
+
+----------------------------------------------------------
+-- Helpers
+----------------------------------------------------------
+local ts = vim.treesitter
+local tsq = vim.treesitter.query
+
+local function get_node_text(node, bufnr)
+  return ts.get_node_text(node, bufnr)
+end
+
+local function make_tree_sitter_function_list(bufnr)
+  local lang = vim.bo[bufnr].filetype
+  local parser = ts.get_parser(bufnr, lang)
+  local tree = parser:parse()[1]
+  local root = tree:root()
+
+  --------------------------------------------------------
+  -- Query oficial válida para tree-sitter-javascript/ts
+  --------------------------------------------------------
+  local query = tsq.parse(lang, [[
+;; export function foo() {}
+(export_statement
+  (function_declaration
+    name: (identifier) @export_name)
+) @fn_export
+
+    ;; function foo() {}
+    (function_declaration
+      name: (identifier) @named_name
+    ) @fn_named
+
+    ;; const foo = () => {}
+    (variable_declarator
+      name: (identifier) @arrow_name
+      value: (arrow_function) @arrow_fn
+    ) @fn_arrow
+
+    ;; const foo = function() {}
+    (variable_declarator
+      name: (identifier) @func_expr_name
+      value: (function_expression) @func_expr
+    ) @fn_func_expr
+
+    ;; callbacks: x => ...
+    (arrow_function) @fn_arrow_callback
+
+    ;; métodos de objetos o clases
+    (method_definition
+      name: (property_identifier) @method_name
+    ) @fn_method
+  ]])
+
+  local functions = {}
+
+  for id, node in query:iter_captures(root, bufnr, 0, -1) do
+    local cap = query.captures[id]
+    local text = get_node_text(node, bufnr)
+    local row, col = node:range()
+
+    local label
+    local hl
+
+    if cap == "export_name" then
+      hl = "TSExportFunction"
+      label = "export function " .. text
+
+    elseif cap == "named_name" then
+      hl = "TSNamedFunction"
+      label = "function " .. text
+
+    elseif cap == "arrow_name" then
+      hl = "TSArrowFunction"
+      label = text .. " = () =>"
+
+    elseif cap == "func_expr_name" then
+      hl = "TSArrowFunction"
+      label = text .. " = function"
+
+    elseif cap == "fn_arrow_callback" then
+      hl = "TSCallback"
+      label = "callback => …" .. text
+
+    elseif cap == "method_name" then
+      hl = "TSMethod"
+      label = "method " .. text
+    end
+
+    if label then
+      table.insert(functions, {
+        label = label,
+        hl = hl,
+        lnum = row,
+        col = col,
+      })
+    end
+  end
+
+  return functions
+end
+
+----------------------------------------------------------
+-- Picker Telescope
+----------------------------------------------------------
+local function telescope_functions_colored()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local filepath = vim.api.nvim_buf_get_name(bufnr)
+
+  local funcs = make_tree_sitter_function_list(bufnr)
+  if #funcs == 0 then
+    vim.notify("No functions found via Tree-sitter", vim.log.levels.WARN)
+    return
+  end
+
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local entry_display = require("telescope.pickers.entry_display")
+
+  local displayer = entry_display.create({
+    separator = " ",
+    items = {
+      { width = 50 },
+      { remaining = true },
+    },
+  })
+
+  pickers
+    .new({}, {
+      prompt_title = "Funciones coloreadas (Tree-sitter OK)",
+      finder = finders.new_table({
+        results = funcs,
+        entry_maker = function(item)
+          return {
+            value = item,
+            ordinal = item.label,
+            display = function()
+              return displayer({
+                { item.label, item.hl },
+                { "l:" .. (item.lnum + 1), "Comment" },
+              })
+            end,
+            lnum = item.lnum +1,
+            col = item.col+1,
+            filename = filepath,
+          }
+        end,
+      }),
+      sorter = conf.generic_sorter({}),
+      previewer = conf.qflist_previewer({}),
+    })
+    :find()
+end
+
+----------------------------------------------------------
+-- Keymap
+----------------------------------------------------------
+vim.keymap.set("n", "<leader>sf", telescope_functions_colored, {
+  desc = "Funciones coloreadas (Tree-sitter)",
+})
+
+vim.keymap.set('n', '<leader>sc', function()
+  builtin.lsp_document_symbols({ symbols = { "class" } })
+end, { desc = "LSP Symbols: Classes" })
+
+vim.keymap.set('n', '<leader>si', function()
+  builtin.lsp_document_symbols({ symbols = { "interface" } })
+end, { desc = "LSP Symbols: Interfaces" })
+
+vim.keymap.set('n', '<leader>sv', function()
+  builtin.lsp_document_symbols({ symbols = { "variable" } })
+end, { desc = "LSP Symbols: Variables" })
+
+vim.keymap.set('n', '<leader>st', function()
+  builtin.lsp_document_symbols({ symbols = { "type", "interface" } })
+end, { desc = "LSP Symbols: Types" })
