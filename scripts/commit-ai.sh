@@ -86,7 +86,6 @@ Output *only* the raw commit message (subject and optional body), without any in
 Git Diff:"
 
 FULL_REQUEST_TEXT=$(printf "%s\n\n\`\`\`diff\n%s\n\`\`\`" "$COMMIT_PROMPT" "$GIT_DIFF")
-echo "$FULL_REQUEST_TEXT" | pbcopy
 
 # --- Call Cursor Agent ---
 echo "Sending diff to cursor-agent..."
