@@ -8,9 +8,9 @@ elif [[ "$BASH_VERSION" < "5" && -x /usr/local/bin/bash ]]; then
 fi
 
 # --- Pre-checks ---
-if ! command -v cursor-agent &> /dev/null; then
-    echo "Error: cursor-agent is not installed or not in PATH." >&2
-    echo "Please ensure cursor-agent is available." >&2
+if ! command -v ollama &> /dev/null; then
+    echo "Error: ollama is not installed or not in PATH." >&2
+    echo "Please ensure ollama is available." >&2
     exit 1
 fi
 
@@ -87,18 +87,18 @@ Git Diff:"
 
 FULL_REQUEST_TEXT=$(printf "%s\n\n\`\`\`diff\n%s\n\`\`\`" "$COMMIT_PROMPT" "$GIT_DIFF")
 
-# --- Call Cursor Agent ---
-echo "Sending diff to cursor-agent..."
-COMMIT_MESSAGE=$(cursor-agent prompt "$FULL_REQUEST_TEXT" --print)
+# --- Call Ollama ---
+echo "Sending diff to ollama (model: gemma3n:e4b)..."
+COMMIT_MESSAGE=$(echo "$FULL_REQUEST_TEXT" | ollama run gemma3n:e4b)
 
 if [ $? -ne 0 ]; then
-    echo "Error: cursor-agent command failed." >&2
+    echo "Error: ollama command failed." >&2
     exit 1
 fi
 
 # Check if COMMIT_MESSAGE is empty
 if [ -z "$COMMIT_MESSAGE" ]; then
-    echo "Error: cursor-agent returned an empty response." >&2
+    echo "Error: ollama returned an empty response." >&2
     exit 1
 fi
 
