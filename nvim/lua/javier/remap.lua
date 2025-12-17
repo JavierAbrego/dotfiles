@@ -57,3 +57,6 @@ vim.api.nvim_create_user_command('ReloadConfig', function()
   dofile(vim.env.MYVIMRC)
 end, {})
 --vim.keymap.set('n', '<C-m>', ':RenderMarkdown toggle<CR>')
+
+-- Checktime with Ctrl+R
+vim.keymap.set('n', '<C-r>', ':checktime<CR>', { noremap = true, silent = true })
