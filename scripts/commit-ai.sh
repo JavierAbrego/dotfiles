@@ -89,7 +89,7 @@ FULL_REQUEST_TEXT=$(printf "%s\n\n\`\`\`diff\n%s\n\`\`\`" "$COMMIT_PROMPT" "$GIT
 
 # --- Call Ollama ---
 echo "Sending diff to ollama (model: gpt-oss-u:20b)..."
-COMMIT_MESSAGE=$(echo "$FULL_REQUEST_TEXT" | ollama run second_constantine/gpt-oss-u:20b --hidethinking)
+COMMIT_MESSAGE=$(echo "$FULL_REQUEST_TEXT" | ollama run gemma3:27b --hidethinking)
 
 if [ $? -ne 0 ]; then
     echo "Error: ollama command failed." >&2
