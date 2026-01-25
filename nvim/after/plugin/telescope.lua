@@ -104,9 +104,23 @@ end, {})
 
 -- Git pickers
 vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
-vim.keymap.set('n', '<leader>gcc', builtin.git_bcommits, {})
+vim.keymap.set('n', '<leader>gcc', function()
+  require('telescope.builtin').git_bcommits({
+    git_command = {
+      'git', 'log',
+      '--pretty=format:%C(auto)%h %ad %s',
+      '--date=short'
+    },
+  })
+end, { desc = 'Git buffer commits (with date)' })
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
+local builtin = require('telescope.builtin')
+
+-- Search for the files with differences to default branch.
+vim.keymap.set({'n', 'v'}, '<leader>gss', function()
+    require('git_branch').files()
+end)
 
 -- Utilidades
 vim.keymap.set('n', '<leader>fr', builtin.resume, {})

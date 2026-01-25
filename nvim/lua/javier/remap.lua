@@ -13,48 +13,69 @@ vim.keymap.set('n', '<leader>lc', ':Leet console<CR>')
 vim.keymap.set('n', '<leader>ls', ':Leet submit<CR>')
 vim.keymap.set('n', '<leader>lm', ':Leet menu<CR>')
 vim.keymap.set('n', '<leader>lo', ':Leet open<CR>')
-vim.keymap.set("n", "<leader>cp", function()
-  vim.fn.setreg("+", vim.fn.expand("%:p"))
+vim.keymap.set("n", "<leader>cpp", function()
+	vim.fn.setreg("+", vim.fn.expand("%:p"))
 end, { desc = "Copiar ruta absoluta al clipboard" })
 
 
+vim.keymap.set("n", "<leader>cp", function()
+	local abs_path = vim.fn.expand("%:p")
+	local root = vim.fn.getcwd()
+
+	-- Normaliza (por si acaso)
+	root = vim.fn.fnamemodify(root, ":p"):gsub("/$", "")
+
+	if abs_path:sub(1, #root) ~= root then
+		vim.notify("El archivo no está bajo el cwd actual", vim.log.levels.WARN)
+		return
+	end
+
+	local relative_path = abs_path:sub(#root + 1)
+	if relative_path:sub(1, 1) ~= "/" then
+		relative_path = "/" .. relative_path
+	end
+
+	vim.fn.setreg("+", relative_path)
+	vim.notify("Copiado: " .. relative_path)
+end, { desc = "Copiar ruta relativa desde :pwd" })
+
 -- Function to execute a command synchronously
 local function execute_command(cmd)
-  local handle = io.popen(cmd)
-  local result = handle:read("*a")
-  handle:close()
-  return result
+	local handle = io.popen(cmd)
+	local result = handle:read("*a")
+	handle:close()
+	return result
 end
 
 local function executeCurrentFileWithCommand(cmd)
-		vim.cmd(':sp')
-		local command = table.concat({":ter ", cmd," \"",vim.fn.expand("%"), '"'}, "")		
-		vim.cmd(command)
+	vim.cmd(':sp')
+	local command = table.concat({ ":ter ", cmd, " \"", vim.fn.expand("%"), '"' }, "")
+	vim.cmd(command)
 end
 -- Key mapping
 vim.keymap.set("n", "<C-Enter>", function()
-  local file_extension = vim.fn.expand("%:e")
+	local file_extension = vim.fn.expand("%:e")
 
-  if file_extension == "c" then
-			executeCurrentFileWithCommand('gcc')
+	if file_extension == "c" then
+		executeCurrentFileWithCommand('gcc')
 	elseif file_extension == "cpp" then
-			executeCurrentFileWithCommand('g++ -std=c++14')
+		executeCurrentFileWithCommand('g++ -std=c++14')
 	elseif file_extension == "java" then
-			executeCurrentFileWithCommand('java')
+		executeCurrentFileWithCommand('java')
 	elseif file_extension == "py" then
-			executeCurrentFileWithCommand('python3')
+		executeCurrentFileWithCommand('python3')
 	elseif file_extension == "js" then
-			executeCurrentFileWithCommand('node')
+		executeCurrentFileWithCommand('node')
 	elseif file_extension == "ts" then
-			executeCurrentFileWithCommand('ts-node')
-  else
-    print("File extension not supported for execution.")
-  end
+		executeCurrentFileWithCommand('ts-node')
+	else
+		print("File extension not supported for execution.")
+	end
 end, { silent = true })
 
 
 vim.api.nvim_create_user_command('ReloadConfig', function()
-  dofile(vim.env.MYVIMRC)
+	dofile(vim.env.MYVIMRC)
 end, {})
 --vim.keymap.set('n', '<C-m>', ':RenderMarkdown toggle<CR>')
 

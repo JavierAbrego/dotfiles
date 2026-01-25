@@ -31,6 +31,7 @@ local plugins = {
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{ 'mrloop/telescope-git-branch.nvim' },
 }
 	},
 	{
