@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neovim Shortcuts Cheatsheet</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --card: #121a2a;
+      --text: #e6edf3;
+      --muted: #9fb0c0;
+      --border: rgba(255,255,255,.10);
+      --pill: rgba(255,255,255,.08);
+      --accent: #7ef29c;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(126,242,156,.10), transparent 60%),
+                  radial-gradient(1000px 600px at 80% 20%, rgba(157,198,255,.10), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.35;
+    }
+    header {
+      padding: 28px 22px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: .2px;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      background: var(--pill);
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    main {
+      padding: 18px 22px 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card {
+      grid-column: span 6;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 14px 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      letter-spacing: .2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .hint {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.12);
+    }
+    th, td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 13px;
+    }
+    th {
+      text-align: left;
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(255,255,255,.03);
+    }
+    tr:last-child td { border-bottom: 0; }
+    kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .desc { color: var(--text); }
+    .note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .card { grid-column: span 12; }
+    }
+
+    /* Print styles */
+    @media print {
+      :root {
+        --bg: #ffffff;
+        --card: #ffffff;
+        --text: #000000;
+        --muted: #333333;
+        --border: rgba(0,0,0,.20);
+        --pill: #f4f4f4;
+      }
+      body {
+        background: white !important;
+        color: #000 !important;
+      }
+      header { border-bottom: 1px solid rgba(0,0,0,.2); }
+      .card {
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      table { background: white; }
+      kbd { background: #f6f6f6; }
+      .meta { color: #222; }
+      a { color: #000; text-decoration: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Neovim Shortcuts Cheatsheet</h1>
+    <div class="meta">
+      <span class="pill">Leader: <kbd>&lt;leader&gt;</kbd> (según tu config)</span>
+      <span class="pill">Modos: <kbd>n</kbd> normal · <kbd>v</kbd> visual · <kbd>i</kbd> insert</span>
+      <span class="pill">Tip: imprime desde el navegador (Ctrl+P)</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <!-- Telescope: Files/Search -->
+      <section class="card">
+        <h2>Telescope — Archivos &amp; búsqueda <span class="hint">finder / grep</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>&lt;leader&gt;ff</kbd></td><td class="desc">Buscar ficheros Git (si hay repo); si no, <code>find_files</code> con hidden.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;fa</kbd></td><td class="desc">Buscar todos los ficheros (incluye hidden).</td></tr>
+            <tr><td><kbd>&lt;leader&gt;fg</kbd></td><td class="desc">Live grep (excluye <code>*.md</code>).</td></tr>
+            <tr><td><kbd>&lt;leader&gt;ps</kbd></td><td class="desc">Grep string con prompt (input).</td></tr>
+            <tr><td><kbd>&lt;leader&gt;fr</kbd></td><td class="desc">Telescope resume (último picker).</td></tr>
+          </tbody>
+        </table>
+        <div class="note">Notas: tienes <code>fd</code> como <code>find_command</code>, ignores para <code>node_modules</code>, <code>.next</code>, etc.</div>
+      </section>
+
+      <!-- Telescope: Buffers/Help/Treesitter -->
+      <section class="card">
+        <h2>Telescope — Buffers &amp; ayuda <span class="hint">navegación rápida</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>&lt;leader&gt;fb</kbd></td><td class="desc">Buffers.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;fh</kbd></td><td class="desc">Help tags.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;ft</kbd></td><td class="desc">Treesitter (inspección/navegación).</td></tr>
+            <tr><td><kbd>&lt;leader&gt;mm</kbd></td><td class="desc">Man pages.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Telescope: LSP -->
+      <section class="card">
+        <h2>Telescope — LSP <span class="hint">símbolos / diagnósticos</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>&lt;leader&gt;rr</kbd></td><td class="desc">LSP references.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;tt</kbd></td><td class="desc">LSP type definitions.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;dd</kbd></td><td class="desc">Diagnostics (Telescope).</td></tr>
+            <tr><td><kbd>&lt;leader&gt;sc</kbd></td><td class="desc">Document symbols: classes.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;si</kbd></td><td class="desc">Document symbols: interfaces.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;sv</kbd></td><td class="desc">Document symbols: variables.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;st</kbd></td><td class="desc">Document symbols: types + interfaces.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Telescope: Custom Treesitter Functions -->
+      <section class="card">
+        <h2>Telescope — Funciones (Tree-sitter) <span class="hint">picker custom</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><kbd>&lt;leader&gt;sf</kbd></td>
+              <td class="desc">Lista de funciones coloreadas (export/named/arrow/method/callback) via Tree-sitter.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note">Incluye highlights: TSExportFunction, TSNamedFunction, TSArrowFunction, TSMethod, TSCallback.</div>
+      </section>
+
+      <!-- Colorscheme -->
+      <section class="card">
+        <h2>UI — Colorscheme <span class="hint">preview + transparencia</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><kbd>&lt;leader&gt;cs</kbd></td>
+              <td class="desc">Selector de colorscheme con preview; al confirmar aplica <code>SetTransparentBackground()</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Git -->
+      <section class="card">
+        <h2>Git (Telescope + custom) <span class="hint">commits/branches/status</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>&lt;leader&gt;gc</kbd></td><td class="desc">Git commits (repo).</td></tr>
+            <tr><td><kbd>&lt;leader&gt;gcc</kbd></td><td class="desc">Git buffer commits con fecha (custom <code>git log --date=short</code>).</td></tr>
+            <tr><td><kbd>&lt;leader&gt;gb</kbd></td><td class="desc">Git branches.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;gs</kbd></td><td class="desc">Git status.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;gss</kbd></td><td class="desc">Archivos distintos a la rama por defecto (usa <code>git_branch'.files()</code>) — mapeo en <kbd>n</kbd> y <kbd>v</kbd>.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- General / Editing -->
+      <section class="card">
+        <h2>General &amp; edición <span class="hint">productividad</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>^</kbd></td><td class="desc">Ir al buffer anterior (<code>:b#</code>).</td></tr>
+            <tr><td><kbd>&lt;leader&gt;pv</kbd></td><td class="desc">Abrir explorer (<code>:Ex</code>).</td></tr>
+            <tr><td><kbd>v</kbd> <kbd>J</kbd></td><td class="desc">Mover selección visual 1 línea abajo.</td></tr>
+            <tr><td><kbd>v</kbd> <kbd>K</kbd></td><td class="desc">Mover selección visual 2 líneas arriba.</td></tr>
+            <tr><td><kbd>i</kbd> <kbd>Ctrl</kbd>+<kbd>c</kbd></td><td class="desc">Salir a normal como Esc y volver al cursor anterior (<code>&lt;Esc&gt;`^</code>).</td></tr>
+            <tr><td><kbd>&lt;leader&gt;w</kbd></td><td class="desc">Guardar todo (<code>:wa</code>).</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>r</kbd></td><td class="desc">Checktime (<code>:checktime</code>) para recargar cambios externos.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;wrk</kbd></td><td class="desc">SwitchWorkspaceDropdown (función custom).</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Clipboard paths -->
+      <section class="card">
+        <h2>Rutas al clipboard <span class="hint">copiar paths</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>&lt;leader&gt;cpp</kbd></td><td class="desc">Copiar ruta absoluta del fichero actual al clipboard.</td></tr>
+            <tr><td><kbd>&lt;leader&gt;cp</kbd></td><td class="desc">Copiar ruta relativa desde <code>:pwd</code> (valida que el archivo esté bajo el cwd).</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- LeetCode -->
+      <section class="card">
+        <h2>LeetCode <span class="hint">plugin commands</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>&lt;leader&gt;lr</kbd></td><td class="desc"><code>:Leet run</code></td></tr>
+            <tr><td><kbd>&lt;leader&gt;lc</kbd></td><td class="desc"><code>:Leet console</code></td></tr>
+            <tr><td><kbd>&lt;leader&gt;ls</kbd></td><td class="desc"><code>:Leet submit</code></td></tr>
+            <tr><td><kbd>&lt;leader&gt;lm</kbd></td><td class="desc"><code>:Leet menu</code></td></tr>
+            <tr><td><kbd>&lt;leader&gt;lo</kbd></td><td class="desc"><code>:Leet open</code></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Run current file -->
+      <section class="card">
+        <h2>Ejecutar fichero actual <span class="hint">terminal split</span></h2>
+        <table>
+          <thead>
+            <tr><th>Shortcut</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><kbd>Ctrl</kbd>+<kbd>Enter</kbd></td>
+              <td class="desc">
+                Ejecuta el fichero actual en split con terminal, según extensión:
+                <div class="note">
+                  <strong>.c</strong> → <code>gcc</code> · <strong>.cpp</strong> → <code>g++ -std=c++14</code> ·
+                  <strong>.java</strong> → <code>java</code> · <strong>.py</strong> → <code>python3</code> ·
+                  <strong>.js</strong> → <code>node</code> · <strong>.ts</strong> → <code>ts-node</code>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Commands -->
+      <section class="card">
+        <h2>Comandos útiles <span class="hint">user commands</span></h2>
+        <table>
+          <thead>
+            <tr><th>Comando</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd>:ReloadConfig</kbd></td><td class="desc">Recarga tu config con <code>dofile($MYVIMRC)</code>.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>
