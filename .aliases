@@ -142,6 +142,7 @@ alias checkgpu="sudo powermetrics --samplers gpu_power -n 1"
 alias curl2http='~/dotfiles/scripts/curl2http.js'
 alias or="ollama run gemma3:27b"
 alias catn='awk '\''FNR==1{print "\n===== " FILENAME " ====="}{print}'\'''
+alias vk='npx vibe-kanban'
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
 source ~/dotfiles/dotfiles-personal/.aliases
