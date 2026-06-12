@@ -140,7 +140,7 @@ countRepoLines() {
 }
 alias checkgpu="sudo powermetrics --samplers gpu_power -n 1"
 alias curl2http='~/dotfiles/scripts/curl2http.js'
-alias or="ollama run gemma3:27b"
+alias or="ollama run lfm2:24b"
 alias aisummarizer="cd ~/dev/AI-Video-Transcriber && OPENAI_API_KEY=dummy OPENAI_BASE_URL=http://localhost:11434/v1 ./venv/bin/python start.py --prod"
 alias catn='awk '\''FNR==1{print "\n===== " FILENAME " ====="}{print}'\'''
 alias vk='npx vibe-kanban'
