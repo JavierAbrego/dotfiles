@@ -80,3 +80,5 @@ ln -s ~/dotfiles/.hushlogin ~/.hushlogin
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.vim ~/.vim
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+mkdir -p ~/.config/kitty
+ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf

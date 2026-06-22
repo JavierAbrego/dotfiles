@@ -70,7 +70,7 @@
 [core]
   pager = delta
     eol = lf
-	excludesfile = ${GIT_IGNORE_GLOBAL}
+	excludesfile = /Users/javier/.gitignore_global
 	autocrlf = input
 [interactive]
   diffFilter = delta --color-only
@@ -104,12 +104,16 @@
 	defaultBranch = main
 [gpg]
 	program = gpg
-[commit]
-	template = ${GIT_TEMPLATE_PATH}
 [user]
 	name = Javier Abrego
-	email = javier.abrego@revolucionmusic.com
+	email = javier.abrego@broadcom.com
 [credential]
 	helper = store
 [http]
 	postBuffer = 100000000
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
