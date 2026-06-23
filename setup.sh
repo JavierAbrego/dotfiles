@@ -82,3 +82,10 @@ ln -s ~/dotfiles/.vim ~/.vim
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 mkdir -p ~/.config/kitty
 ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+
+# Enlazar los slash commands de Claude Code (dotfiles-personal/.claude/commands)
+# a ~/.claude/commands. Un symlink por fichero, idempotente (-f sobrescribe).
+mkdir -p ~/.claude/commands
+for cmd in ~/dotfiles/dotfiles-personal/.claude/commands/*.md; do
+  [ -e "$cmd" ] && ln -sf "$cmd" ~/.claude/commands/"$(basename "$cmd")"
+done
