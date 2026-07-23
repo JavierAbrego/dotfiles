@@ -145,6 +145,8 @@ alias aisummarizer="cd ~/dev/AI-Video-Transcriber && OPENAI_API_KEY=dummy OPENAI
 alias catn='awk '\''FNR==1{print "\n===== " FILENAME " ====="}{print}'\'''
 alias vk='npx vibe-kanban'
 alias e='exit'
+# Claude Code fijado a 2.1.217 (evita que el auto-updater pise el symlink)
+alias c='/home/ubuntu/.local/share/claude/versions/2.1.217'
 shopt -s expand_aliases
 source ~/dotfiles/dotfiles-vmware/.aliases
 source ~/dotfiles/dotfiles-personal/.aliases
