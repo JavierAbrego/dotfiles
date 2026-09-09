@@ -107,7 +107,7 @@
 	program = gpg
 [user]
 	name = Javier Abrego
-	email = javier.abrego@broadcom.com
+	email = javier.abrego@revolucionmusic.com
 [credential]
 	helper = store
 [http]
@@ -118,3 +118,9 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

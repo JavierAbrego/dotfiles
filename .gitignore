@@ -1,3 +1,4 @@
 .vim/pack
 .vim/swaps
 .DS_Store
+.gitconfig.lock
