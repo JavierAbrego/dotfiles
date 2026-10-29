@@ -119,7 +119,7 @@ jiramep () { eval "jira issue list -a $(jira me) --plain"; }
 alias cht="~/dotfiles/scripts/cht.sh"
 alias duck="ddgr"
 alias t="tmux"
-alias ta="tmux attach-session -t 0"
+alias ta="tmux attach-session"
 alias catimg="tiv"
 alias g="git"
 wttr() { curl "wttr.in/$1"; }
